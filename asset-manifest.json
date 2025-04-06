@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Santhosh-reddyp/final-website/static/css/main.005f1dc1.css",
+    "main.js": "/Santhosh-reddyp/final-website/static/js/main.88b0939b.js",
+    "static/js/453.be6288a2.chunk.js": "/Santhosh-reddyp/final-website/static/js/453.be6288a2.chunk.js",
+    "index.html": "/Santhosh-reddyp/final-website/index.html",
+    "main.005f1dc1.css.map": "/Santhosh-reddyp/final-website/static/css/main.005f1dc1.css.map",
+    "main.88b0939b.js.map": "/Santhosh-reddyp/final-website/static/js/main.88b0939b.js.map",
+    "453.be6288a2.chunk.js.map": "/Santhosh-reddyp/final-website/static/js/453.be6288a2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.005f1dc1.css",
+    "static/js/main.88b0939b.js"
+  ]
+}
