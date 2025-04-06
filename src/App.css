@@ -1,0 +1,384 @@
+/* Modern Glass Morphism Theme */
+:root {
+  --primary: #6c5ce7;
+  --primary-light: #a29bfe;
+  --accent: #fd79a8;
+  --accent-light: #ffb8d9;
+  --light: #f5f6fa;
+  --dark: #2d3436;
+  --glass: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --neon-glow: 0 0 15px rgba(253, 121, 168, 0.7);
+}
+
+/* Base Styles with Animated Gradient Background */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #6c5ce7, #a29bfe, #fd79a8, #ffb8d9);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main Container with Glass Effect */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Typography with Neon Effect */
+.gradient-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #fff, var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.gradient-text::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 100%;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Banner Image with Floating Effect */
+.banner-image {
+  width: 90%;
+  max-width: 800px;
+  border-radius: 24px;
+  margin: 2rem auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3),
+              var(--neon-glow);
+  border: 2px solid var(--glass-border);
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.banner-image:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4),
+              0 0 25px var(--accent-light);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  25% { transform: translateY(-20px) rotateX(5deg) rotateY(5deg); }
+  50% { transform: translateY(0px) rotateX(0deg) rotateY(10deg); }
+  75% { transform: translateY(-15px) rotateX(-5deg) rotateY(5deg); }
+}
+
+/* Education Cards Grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 3rem;
+  perspective: 1000px;
+}
+
+.education-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid var(--glass-border);
+  transform-style: preserve-3d;
+}
+
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+  z-index: -1;
+}
+
+.education-card h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: var(--card-color);
+  transition: all 0.3s ease;
+}
+
+.hover-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: 0.6s;
+  z-index: -1;
+}
+
+.education-card:hover {
+  transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              var(--neon-glow);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.education-card:hover .card-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.education-card:hover h3 {
+  color: var(--accent-light);
+}
+
+.education-card:hover .hover-effect {
+  left: 100%;
+}
+
+/* Quiz Container - Futuristic Fullscreen */
+.quiz-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a2a4f, #2c3e70);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.quiz-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Neon Back Button */
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 12px 25px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 1px solid var(--accent);
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  box-shadow: var(--neon-glow),
+              inset 0 0 5px rgba(253, 121, 168, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(253, 121, 168, 0.2);
+  box-shadow: 0 0 20px var(--accent-light),
+              inset 0 0 10px rgba(253, 121, 168, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Futuristic Iframe */
+.quiz-iframe {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Corner Decorations */
+.corner-decoration {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-color: var(--accent);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.7;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.corner-decoration.top-left {
+  top: 20px;
+  left: 20px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.corner-decoration.top-right {
+  top: 20px;
+  right: 20px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.corner-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Enhanced Cursor Effects */
+.cursor {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s linear, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor-trail {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
+}
+
+.glitter-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  animation: glitterFade 1s forwards;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes glitterFade {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+    margin: 1rem;
+    border-radius: 16px;
+  }
+  
+  .gradient-text {
+    font-size: 2.5rem;
+  }
+  
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .education-card {
+    padding: 1.5rem;
+  }
+  
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px 16px;
+  }
+}
