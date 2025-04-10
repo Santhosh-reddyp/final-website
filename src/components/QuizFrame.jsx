@@ -5,7 +5,7 @@ const quizUrls = {
   "inter-mbipc": "/inter-mbipc.html",
   "inter-bipc": "/inter-bipc.html",
   "inter-mpc": "/inter-mpc.html",
-  "btech": "/btech.html",
+  "bachelors": "/btech.html",
   "masters": "/masters.html"
 };
 
