@@ -9,7 +9,7 @@ const educationLevels = [
   { id: 'inter-mbipc', icon: 'flask', name: 'Inter - MBiPC', color: '#7DDFFF' },
   { id: 'inter-bipc', icon: 'dna', name: 'Inter - BiPC', color: '#A0FF7D' },
   { id: 'inter-mpc', icon: 'calculator', name: 'Inter - MPC', color: '#FF7DE8' },
-  { id: 'bachelors', icon: 'laptop-code', name: 'BTech', color: '#FFD47D' },
+  { id: 'bachelors', icon: 'laptop-code', name: 'Bachelors', color: '#FFD47D' },
   { id: 'masters', icon: 'user-graduate', name: 'Masters', color: '#7D8CFF' }
 ];
 
