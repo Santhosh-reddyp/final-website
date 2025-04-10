@@ -108,41 +108,44 @@
       border: none;
     }
     
-    /* Enhanced Glitter Cursor */
+    /* Laser Green Cursor */
     .cursor {
-      position: fixed;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: white;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s linear;
-    }
-    
-    .cursor-trail {
-      position: fixed;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.2s ease-out;
-    }
-    
-    .glitter {
       position: fixed;
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      background: #00ff00;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s linear;
+      box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+    
+    .cursor-trail {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 255, 0, 0.2);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+      box-shadow: 0 0 15px #00ff00;
+    }
+    
+    .glitter {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00ff00;
       pointer-events: none;
       z-index: 9997;
       transform: translate(-50%, -50%);
-      animation: glitterFade 1s forwards;
+      box-shadow: 0 0 5px #00ff00;
+      animation: glitterFade 0.5s forwards;
     }
     
     @keyframes glitterFade {
@@ -217,7 +220,7 @@
       document.querySelector(".container").style.display = "block";
     }
 
-    // Enhanced Glitter Cursor Effect
+    // Laser Green Cursor Effect
     const cursor = document.createElement('div');
     cursor.className = 'cursor';
     document.body.appendChild(cursor);
@@ -229,7 +232,6 @@
     let mouseX = 0, mouseY = 0;
     let trailX = 0, trailY = 0;
     let lastTime = 0;
-    const colors = ['#FFD700', '#FF69B4', '#7B68EE', '#00FFFF', '#FFA500'];
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -237,7 +239,7 @@
       
       // Create glitter particles based on movement speed
       const now = performance.now();
-      if (now - lastTime > 50) { // Adjust timing for glitter frequency
+      if (now - lastTime > 30) {
         createGlitter(e.clientX, e.clientY);
         lastTime = now;
       }
@@ -248,12 +250,11 @@
       glitter.className = 'glitter';
       glitter.style.left = x + 'px';
       glitter.style.top = y + 'px';
-      glitter.style.background = colors[Math.floor(Math.random() * colors.length)];
       document.body.appendChild(glitter);
       
       setTimeout(() => {
         glitter.remove();
-      }, 1000);
+      }, 500);
     }
 
     function animateCursor() {
@@ -262,8 +263,8 @@
       cursor.style.top = mouseY + 'px';
       
       // Smooth trail movement with slight delay
-      trailX += (mouseX - trailX) * 0.2;
-      trailY += (mouseY - trailY) * 0.2;
+      trailX += (mouseX - trailX) * 0.15;
+      trailY += (mouseY - trailY) * 0.15;
       trail.style.left = trailX + 'px';
       trail.style.top = trailY + 'px';
       
@@ -275,8 +276,8 @@
     // Button hover effects
     document.querySelectorAll('button, a').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        trail.style.transform = 'translate(-50%, -50%) scale(1.8)';
+        cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+        trail.style.transform = 'translate(-50%, -50%) scale(2.5)';
       });
       
       el.addEventListener('mouseleave', () => {
